@@ -19,19 +19,19 @@
 
 // logger.log('Hello World') - calling exported method from module.exports.log
 
-const log = require('./logger');
-log('message');
+// const log = require('./logger');
+// log('message');
 
-const path = require('path');
+// const path = require('path');
 
-var pathObj = path.parse(__filename);
+// var pathObj = path.parse(__filename);
 
-console.log(pathObj);
+// console.log(pathObj);
 
-const os = require('os');
+// const os = require('os');
 
-var totalMemory =  os.totalmem();
-var freeMemory = os.freemem();
+// var totalMemory =  os.totalmem();
+// var freeMemory = os.freemem();
 
 // console.log('Total Memory: ' + totalMemory);
 
@@ -39,10 +39,10 @@ var freeMemory = os.freemem();
 // ES6 / ES2015 : ECMAScript 6
 // basically another way of writing line 36 above without concatenation
 
-console.log(`Total Memory: ${totalMemory}`);
-console.log(`Free Memory: ${freeMemory}`);
+// console.log(`Total Memory: ${totalMemory}`);
+// console.log(`Free Memory: ${freeMemory}`);
 
-const fs = require('fs');
+// const fs = require('fs');
 
 // synchronous form of this method
 // const files = fs.readdirSync('./');
@@ -59,3 +59,44 @@ const fs = require('fs');
 //     if (err) console.log('Error', err);
 //     else console.log('Result', files);
 // });
+
+// events emitter is a class not a function hence capital first letter
+const EventEmitter = require('events');
+// const emitter = new EventEmitter();
+
+// Register a listener
+// on in Jquery is the same as addListener in JS
+// emitter.on('messageLogged', function(arg){ // arg represents the id and url of emit
+//     console.log('Listener called', arg);        // it doesn't have to be arg, can be anything but best if arg, e or eventArg
+// });
+// listener must be registered before the emitter
+
+// another way to write the function on line 69
+// this is called arrow function from ES6
+// emitter.on('messageLogged', (arg) => { 
+//     console.log('Listener called', arg);
+// });
+
+// emit makeing known that an event happened
+// Raise an event
+// emitter.emit('messageLogged', {id: 1, url: 'http://'});
+
+
+// challenge
+
+// emitter.on('challenge logged', function(arg) {
+//     console.log('challenge listener called', arg);
+// });
+
+// // Raise event called logging with data.
+// emitter.emit('challenge logged', {data: 'message'});
+
+const Logger = require('./logger');
+const logger = new Logger()
+
+// Register a listener
+logger.on('messageLogged', function(arg){ 
+    console.log('Listener called', arg);   
+});
+
+logger.log('message');
