@@ -44,5 +44,18 @@ console.log(`Free Memory: ${freeMemory}`);
 
 const fs = require('fs');
 
-const files = fs.readdirSync('./');
-console.log(files)
+// synchronous form of this method
+// const files = fs.readdirSync('./');
+// console.log(files)
+
+// asynchronous form of this method
+// fs.readdir('./', function(err, files) {
+//     if (err) console.log('Error', err);
+//     else console.log('Result', files);
+// });
+
+// line 51 to 55 with error (err)
+// fs.readdir('$', function(err, files) {
+//     if (err) console.log('Error', err);
+//     else console.log('Result', files);
+// });
